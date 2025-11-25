@@ -7,3 +7,5 @@ What is the DOM?
     Tree-like structure where each node is an object representing part of the document
 
     Allows JavaScript to interact with and manipulate web pages
+
+Hello i'm in auth branch
