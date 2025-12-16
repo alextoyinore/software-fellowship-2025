@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JS Modules Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Modules Demo</h1>
+        
+        <div>
+            <button onclick="testAdd()">Test Add Function</button>
+            <button onclick="testSubtract()">Test Subtract Function</button>
+            <button onclick="showPI()">Show PI Value</button>
+        </div>
+        
+        <div id="output" class="result">
+            Results will appear here...
+        </div>
+        
+        <div style="margin-top: 20px; color: #666;">
+            <p>Open Developer Tools (F12) → Console to see module logs.</p>
+            <p>Try typing in console: <code>doMath.add(7, 3)</code></p>
+        </div>
+    </div>
+
+    <!-- Main module -->
+    <script type="module" src="main.js"></script>
+    
+    <script>
+        // These functions can call the module functions
+        function testAdd() {
+            const result = window.doMath ? window.doMath.add(25, 17) : 'Module not loaded';
+            document.getElementById('output').innerHTML = 
+                `25 + 17 = <strong>${result}</strong>`;
+        }
+        
+        function testSubtract() {
+            const result = window.doMath ? window.doMath.subtract(50, 23) : 'Module not loaded';
+            document.getElementById('output').innerHTML = 
+                `50 - 23 = <strong>${result}</strong>`;
+        }
+        
+        function showPI() {
+            const pi = window.doMath ? window.doMath.PI : 'Module not loaded';
+            document.getElementById('output').innerHTML = 
+                `PI = <strong>${pi}</strong>`;
+        }
+    </script>
+</body>
+</html>

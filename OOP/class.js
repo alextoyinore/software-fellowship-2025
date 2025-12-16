@@ -23,7 +23,7 @@ class Person {
 const ben = new Person('Ben', 87, 'male')
 const bolu = new Person('Bolu', 14, 'girl')
 
-console.log(ben.greet(), bolu.greet(), Person.species())
+// console.log(ben.greet(), bolu.greet(), Person.species())
 
 class Maths {
     // Some static math methods
@@ -64,11 +64,16 @@ class BankAccount {
         this.accountName = accountName
     }
 
+    // deposit
+    deposit = (amount) => (amount > 0) ? this.#balance + amount : 'Invalid amount'
+
+    // withdraw
+    withdraw = (amount) => (amount > 0 && amount <= this.#balance) ? this.#balance - amount : 'Something went wrong'
+
     getBalance = () => this.#balance
 }
 
 const boluAccount = new BankAccount(6000000, 'Boluwatife Lawanson')
-console.log('Account Name: ', boluAccount.accountName);
-console.log('Account Balance: ', boluAccount.getBalance());
-
+// console.log('Account Name: ', boluAccount.accountName);
+// console.log('Account Balance: ', boluAccount.getBalance());
 
